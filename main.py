@@ -1,4 +1,5 @@
 import random
+import time
 
 def dead_state(width, height):
     board_state = []
@@ -63,14 +64,29 @@ def advance_board(board_state):
 
     return new_board_state
     
+def main():
+    print('Starting the Game of Life with a board of 25x25, with a random configuration.')
+    game_state = random_state(50,15)
 
+    while True:
+        game_state = advance_board(game_state)
+        render(game_state)
+
+        time.sleep(1)
+
+main()
+
+
+
+
+#Testing stuff
 
 #print(dead_state(5,5))
-test = random_state(20,20)
+#test = random_state(20,20)
 #test = [[1,0],[1,1]]
-render(test)
+#render(test)
 #render(random_state(20,20))
 #check_neighbours(test,1,0)
-render(advance_board(test))
+#render(advance_board(test))
 
 
