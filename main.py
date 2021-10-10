@@ -1,19 +1,21 @@
 import random
 
-board_state = []
+class Board:
+    # dimension -> (height,width)
+    def __init__(self, dimension=[4, 4]) -> None:
+        self.boardState = []
+        self.dimension = dimension
 
-def random_state(width, height):
-    for i in range(height):
-        state_list = []
-        for j in range(width):
-            rand = random.random()
-            if rand >= 0.5:
-                state_list.append(0)
-            else:
-                state_list.append(1)
-
-        board_state.append(state_list)
+    # Generating board state
+    def getRandomState(self):
+        for row in range(self.dimension[0]):
+            stateList = []
+            for col in range(self.dimension[1]):
+                stateList.append(1 if random.random() >= 0.5 else 0)
+            self.boardState.append(stateList)
+        return self.boardState
 
 
-random_state(5,5)
-print(board_state)
+if __name__ == "__main__":
+    newBoard = Board([5, 5])
+    print(newBoard.getRandomState())
